@@ -36,7 +36,7 @@ public class GetSetQuestion {
 			Quetions question = new Quetions(i, ques, a, b, c, d, ans);
 		
 			try {
-				PreparedStatement stmt = con.prepareStatement("insert into quiz values(?,?,?,?,?,?,?)");
+				PreparedStatement stmt = con.prepareStatement("insert into quetions values(?,?,?,?,?,?,?)");
 				stmt.setInt(1, question.getId());
 				stmt.setString(2, question.getQuetion());
 				stmt.setString(3, question.getOptionA());
@@ -86,17 +86,18 @@ public class GetSetQuestion {
 		Connection con = DbUtil.getConnection();
 		String ans = "";
 		try {
-			PreparedStatement st = con.prepareStatement("select * from quiz where id=?");
+			PreparedStatement st = con.prepareStatement("select * from questions where id=?");
 			st.setInt(1, id);
 			ResultSet rs = st.executeQuery();
 			while (rs.next()) {
 				System.out.println("Quetion No "+rs.getInt("id"));
-				System.out.println("\t"+rs.getString("quetion"));
-				System.out.println("\t"+rs.getString("A"));
-				System.out.println("\t"+rs.getString("B"));
-				System.out.println("\t"+rs.getString("C"));
-				System.out.println("\t"+rs.getString("D"));
-				ans = rs.getString("Answer");
+				System.out.println("\t"+rs.getString("question"));
+				System.out.println("\t"+rs.getString("a"));
+				System.out.println("\t"+rs.getString("b"));
+				System.out.println("\t"+rs.getString("c"));
+				System.out.println("\t"+rs.getString("d"));
+				ans = rs.getString("ans");
+				
 			}
 			st.close();
 		} catch (Exception e) {

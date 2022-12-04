@@ -6,15 +6,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-import main.bean.Quetions;
+import main.bean.Quetions1;
 import main.util.DbUtil;
-import main.util.ScUtil;
+import main.util.ScUtil1;
 
-public class GetSetQuestion {
+public class GetSetQuestion1 {
 
 	public static void main(String[] args) {
 		
-		Scanner sc = ScUtil.getScanner();
+		Scanner sc = ScUtil1.getScanner();
 
 		Connection con = DbUtil.getConnection();
 		int i = 1;
@@ -33,12 +33,12 @@ public class GetSetQuestion {
 			System.out.println("Enter Answer");
 			String ans = sc.nextLine();
 		
-			Quetions question = new Quetions(i, ques, a, b, c, d, ans);
+			Quetions1 question = new Quetions1(i, ques, a, b, c, d, ans);
 		
 			try {
 				PreparedStatement stmt = con.prepareStatement("insert into quiz values(?,?,?,?,?,?,?)");
 				stmt.setInt(1, question.getId());
-				stmt.setString(2, question.getQuetion());
+				stmt.setString(2, question.getQuetions());
 				stmt.setString(3, question.getOptionA());
 				stmt.setString(4, question.getOptionB());
 				stmt.setString(5, question.getOptionC());
@@ -57,31 +57,9 @@ public class GetSetQuestion {
 		}
 		}
 		DbUtil.closeConnection(con);
-		ScUtil.closeScanner(sc);
+		ScUtil1.closeScanner(sc);
 	}
-	
-	/*public static Quetions getQuestionById(int id) {
-		Connection con = DbUtil.getConnection();
-		try {
-			PreparedStatement st = con.prepareStatement("select * from questions where id=?");
-			st.setInt(1, id);
-			ResultSet rs = st.executeQuery();
-			while (rs.next()) {
-				Quetions q = new Quetions(rs.getInt("id"), rs.getString("question"), rs.getString("a"), rs.getString("b"), rs.getString("c"),
-							rs.getString("d"), rs.getString("ans"));
-				return q;
-				
-			}
-			st.close();
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-			return null;
-		}
-		DbUtil.closeConnection(con);
-		return null;
-	}*/
-	
+		
 	public static String getQuestionById(int id) {
 		Connection con = DbUtil.getConnection();
 		String ans = "";
