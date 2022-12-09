@@ -1,17 +1,26 @@
 package com.list;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class Lambda_Example {
 
 	public static void main(String[] args) {
-		ArrayList al=new ArrayList<>();
-		al.add("50");
-		al.add(99);
-		al.add('A');
-		al.add(98);
+		List<Integer>list=new ArrayList<>();
+		list.add(20);
+		list.add(40);
+		list.add(10);
+		list.add(80);
+		list.add(60);
+		list.add(100);
+		list.add(30);
 		
-		al.forEach(al->System.out.println(al));
+		Collections.sort(list);//asending order
+		System.out.println(list);
+		
+		Collections.reverse(list);//desending order
+		System.out.println(list);
 	}
 
 }

@@ -3,10 +3,10 @@ import java.util.Scanner;
 public class ReverseNumber {
 
 	public static void main(String[] args) {
-		Scanner sc=new Scanner(System.in);
+		//Scanner sc=new Scanner(System.in);
 		System.out.println("Enter the Number ");
-		int num=sc.nextInt();//12345
-		
+		//int num=sc.nextInt();//12345
+		int num=1234;
 		//using algorithm
 		int rev=0;
 		while(num!=0) {
